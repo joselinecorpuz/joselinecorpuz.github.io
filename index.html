@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joseline Corpuz | BS Computer Science Major in Game Development</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0b0e14;
+            --surface-color: #151a23;
+            --surface-hover: #1e2532;
+            --accent-primary: #8b5cf6;
+            --accent-secondary: #3b82f6;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.08), transparent 25%),
+                              radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.08), transparent 25%);
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(11, 14, 20, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover { color: var(--accent-primary); }
+
+        section {
+            padding: 100px 10%;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-primary);
+            border-radius: 2px;
+        }
+
+        .hero {
+            min-height: 100vh;
+            text-align: left;
+            padding-top: 150px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero h1 span {
+            color: var(--text-secondary);
+            display: block;
+            font-size: 1.5rem;
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 10px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--border);
+            background: var(--glass);
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+        }
+
+        .cv-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            background: var(--surface-color);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .cv-image-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #000;
+        }
+
+        .cv-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+            opacity: 0.8;
+        }
+
+        .cv-wrapper:hover .cv-img { opacity: 1; transform: scale(1.03); }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--surface-color);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-secondary);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            background-color: #2d3748;
+            object-fit: cover;
+        }
+
+        .card-body { padding: 1.5rem; }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-secondary);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .card-link {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .card-link:hover { color: var(--accent-primary); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .info-group h3 {
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .info-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+        }
+
+        .info-item strong { display: block; color: #fff; font-size: 1.1rem; }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            background: var(--surface-color);
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .cv-wrapper, .about-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">JOELINE<span style="color:white">.DEV</span></div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#cv">Resume</a>
+            <a href="mailto:joseline.corpuz.cics@ust.edu.ph" class="btn" style="padding: 0.5rem 1rem; border:1px solid var(--accent-primary);">Contact Me</a>
+        </div>
+    </nav>
+
+    <section class="hero fade-in">
+        <div class="container">
+            <h1>
+                <span>Hello, I'm</span>
+                <div class="gradient-text">Joseline A. Corpuz</div>
+            </h1>
+            <p>
+                A 4th Year Computer Science Student at UST majoring in <strong>Game Development</strong>.<br>
+                I specialize in creating immersive experiences using Deep Learning (DQN/PPO), Unity, and Java.
+                Passionate about bridging critical thinking with creative game mechanics.
+            </p>
+            <div style="display: flex; gap: 15px;">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#cv" class="btn">My Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="cv" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">My Resume</h2>
+            
+            <div class="cv-wrapper">
+                <div class="cv-image-container">
+                    <img src="YOUR_CV_IMAGE_LINK_HERE.jpg" alt="CV Preview" class="cv-img">
+                </div>
+
+                <div class="cv-content">
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">Professional Experience</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                        My background includes academic excellence at the University of Santo Tomas, 
+                        technical proficiency in C++, Java, and SQL, and hands-on experience developing 
+                        AI-driven game simulations.
+                    </p>
+                    
+                    <a href="YOUR_CV_FILE_LINK_HERE" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                    <a href="YOUR_CV_FILE_LINK_HERE" target="_blank" class="btn" style="margin-left: 10px;">
+                        <i class="fas fa-eye"></i> View Full Size
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="fade-in">
+        <div class="container">
+            <h2 class="section-title">Selected Projects</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <img src="SPEAKUP_IMAGE_LINK_HERE.jpg" alt="SpeakUP Game" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title">SpeakUP: Interview Sim</h3>
+                        <p class="card-desc">An interactive interview simulation using Deep Q-Networks (DQN) and PPO to provide personalized communication feedback.</p>
+                        <div class="tech-stack">
+                            <span class="badge">Python</span>
+                            <span class="badge">Reinforcement Learning</span>
+                            <span class="badge">Game Dev</span>
+                        </div>
+                        <a href="SPEAKUP_PROJECT_LINK_HERE" class="card-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="STICKY_MARCO_IMAGE_LINK_HERE.jpg" alt="Sticky Marco" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title">Sticky Marco</h3>
+                        <p class="card-desc">Designed and programmed a 2D platformer featuring unique wall-sticking mechanics and custom level designs.</p>
+                        <div class="tech-stack">
+                            <span class="badge">Unity</span>
+                            <span class="badge">C#</span>
+                            <span class="badge">Level Design</span>
+                        </div>
+                        <a href="STICKY_MARCO_PROJECT_LINK_HERE" class="card-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="MV88_IMAGE_LINK_HERE.jpg" alt="Inventory System" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title">MV88 Inventory System</h3>
+                        <p class="card-desc">A streamlined inventory system to track stock levels, manage sales records, and organize product data for pet accessories.</p>
+                        <div class="tech-stack">
+                            <span class="badge">SQL</span>
+                            <span class="badge">Java</span>
+                            <span class="badge">Database</span>
+                        </div>
+                        <a href="MV88_PROJECT_LINK_HERE" class="card-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="fade-in" style="background: var(--surface-color);">
+        <div class="container">
+            <h2 class="section-title">Education & Skills</h2>
+            <div class="about-grid">
+                
+                <div class="info-group">
+                    <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <div class="info-item">
+                        <strong>Bachelor of Science in Computer Science</strong>
+                        <span style="color: var(--text-secondary);">University of Santo Tomas | 2022 – Present</span>
+                        <p style="font-size: 0.9rem; margin-top: 5px;">Major in Game Development</p>
+                    </div>
+                    <div class="info-item">
+                        <strong>Junior & Senior High School</strong>
+                        <span style="color: var(--text-secondary);">Claret School of Quezon City | 2017 – 2022</span>
+                    </div>
+                </div>
+
+                <div class="info-group">
+                    <h3><i class="fas fa-code"></i> Technical Stack</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem;">
+                        <span class="btn" style="font-size: 0.9rem; padding: 5px 15px;">Java</span>
+                        <span class="btn" style="font-size: 0.9rem; padding: 5px 15px;">C++</span>
+                        <span class="btn" style="font-size: 0.9rem; padding: 5px 15px;">SQL</span>
+                        <span class="btn" style="font-size: 0.9rem; padding: 5px 15px;">HTML/CSS</span>
+                        <span class="btn" style="font-size: 0.9rem; padding: 5px 15px;">Unity</span>
+                        <span class="btn" style="font-size: 0.9rem; padding: 5px 15px;">Blender</span>
+                        <span class="btn" style="font-size: 0.9rem; padding: 5px 15px;">Graphic Design</span>
+                    </div>
+                    <h3 style="margin-top: 2rem;"><i class="fas fa-brain"></i> Soft Skills</h3>
+                    <p style="color: var(--text-secondary);">Critical Thinking, Public Speaking, Team Adaptability, Project Management</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <p>joseline.corpuz.cics@ust.edu.ph | 09763397655</p>
+            <div style="margin-top: 1rem; font-size: 1.5rem;">
+                <a href="#" style="margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+                <a href="#" style="margin: 0 10px;"><i class="fab fa-github"></i></a>
+                <a href="#" style="margin: 0 10px;"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">© 2024 Joseline A. Corpuz. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
