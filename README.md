@@ -1,2 +1,2 @@
-# joselinecorpuz.github.io
-Joseline Atayde Corpuz's Portfolio
+# Joseline Atayde Corpuz's Portfolio
+Welcome to my Portfolio everyone!
